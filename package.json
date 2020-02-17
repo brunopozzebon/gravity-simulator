@@ -1,11 +1,12 @@
 {
-  "name": "big-bang",
+  "name": "gravity-simulator",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Bruno Pozzebon <brunopozzebon44@gmail.com>",
   "license": "MIT",
   "scripts":{
-    "start":"nodemon index.js"
+    "start":"node index.js",
+    "dev":"nodemon index.js"
   },
   "dependencies": {
     "express": "^4.17.1"
