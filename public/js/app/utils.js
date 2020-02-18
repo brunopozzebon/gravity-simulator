@@ -27,6 +27,15 @@ function fillBufferWithInicialValue(array,x,y,z){
         array[index]=z;
         type=0;
     }
-    
   }
+
+  
+}
+
+function calculateVolumeOfSphere(radious){
+  return (4 / 3) * Math.PI * (Math.pow(radious, 3));
+}
+
+function calculateRadiousOfSphereWithVolume(volume){
+  return Math.cbrt((3*volume)/(4*Math.PI));
 }

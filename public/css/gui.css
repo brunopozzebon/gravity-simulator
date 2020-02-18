@@ -1,0 +1,15 @@
+.bottomGui{
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.timegui{
+  background-color: white;
+ float: right;
+ padding: 5px;
+ border-radius: 4px;
+  
+}

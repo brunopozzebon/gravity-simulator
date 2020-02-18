@@ -52,13 +52,11 @@ class Body {
       .reduce((forces, planet) => forces.add(this.attractionTo(planet)), new THREE.Vector3())
   }
 
-  addRadious(difference) {
+  addVolume(differenceVolume) {
+    this.volume+=differenceVolume;
     let oldRadios = this.radious;
-    this.radious += difference;
-
-    this.volume = (4 / 3) * Math.PI * (Math.pow(this.radious, 3));
-    this.mass = this.volume * DENSITY;
-
+    this.radious = calculateRadiousOfSphereWithVolume(this.volume);
+    this.mass= this.volume * DENSITY;
     let factor = this.radious / oldRadios;
     this.sphere.scale.x *= factor;
     this.sphere.scale.y *= factor;
@@ -68,9 +66,10 @@ class Body {
   mergeWith(planet) {
     let distance = planet.sphere.position.distanceTo(this.sphere.position);
     let difference = Math.abs(distance - this.radious - planet.radious);
+    let volumeDifference = this.volume - (calculateVolumeOfSphere(this.radious-difference));
 
-    planet.addRadious(difference)
-    this.addRadious(-difference)
+    planet.addVolume(volumeDifference)
+    this.addVolume(-volumeDifference)
 
     if (this.radious <= 0.1) {
       this.removed = true
@@ -102,21 +101,31 @@ class Body {
   }
 
   computeTrace(){
+
+  
     this.traceJump--;
     if (this.traceJump == 0) {
       let positions = this.trace.geometry.attributes.position.array;
 
-      positions[this.index++] = this.sphere.position.x;
-      positions[this.index++] = this.sphere.position.y;
-      positions[this.index++] = this.sphere.position.z;
-
-      this.traceJump = TRACE_JUMP;
-      if (this.index == TRACE_LENGTH * 3) {
-        this.index = 0
+      if(this.index < TRACE_LENGTH * 3){
+        positions[this.index++] = this.sphere.position.x;
+        positions[this.index++] = this.sphere.position.y;
+        positions[this.index++] = this.sphere.position.z;
+        this.trace.geometry.setDrawRange(0, this.index/3);
+      }else{
+        
+        for(let i=0;i<TRACE_LENGTH*3-3;i++){
+          positions[i] = positions[i+3]
+        } 
+        //Change the above code, it´s consume too much processement
+        positions[TRACE_LENGTH*3-3]=this.sphere.position.x;
+        positions[TRACE_LENGTH*3-2]=this.sphere.position.y
+        positions[TRACE_LENGTH*3-1]=this.sphere.position.z
       }
 
       this.trace.geometry.computeBoundingSphere();
-      this.trace.geometry.attributes.position.needsUpdate = true; // required after the first render
+      this.trace.geometry.attributes.position.needsUpdate = true;
+      this.traceJump = TRACE_JUMP;
     }
   }
 }

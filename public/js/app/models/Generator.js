@@ -25,7 +25,7 @@ class Generator{
     const planets = Array();
     planets.push(new Body(0, 0, 0, 10,0,0,0));
 
-    planets.push(new Body(100, 100, 0, 1,10,0,0));
+    planets.push(new Body(40, 40, 0, 1,0,20,0));
     return planets;
   }
 
@@ -62,7 +62,7 @@ class Generator{
     let buffer = new Float32Array(TRACE_LENGTH * 3);
     fillBufferWithInicialValue(buffer,pos_x,pos_y,pos_z);
     traceGeometry.setAttribute('position', new THREE.BufferAttribute(buffer, 3));
-    traceGeometry.setDrawRange(0, TRACE_LENGTH * 3);
+    traceGeometry.setDrawRange(0, 3);
     return new THREE.Line(traceGeometry, traceMaterial);
   }
 }
