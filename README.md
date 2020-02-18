@@ -1,0 +1,64 @@
+# Gravity Simulator
+
+This project is a 3D browser application, that uses ThreeJS to create an awesome gravity simulator. 
+
+![new](https://user-images.githubusercontent.com/37053115/74696286-c7314400-51d5-11ea-8e70-b88d3d342ab3.png)
+
+## :file_folder: Requirements
+It need the following programs to work
+1. NodeJs
+2. Yarn 
+
+## :rocket: How to run it
+```bash
+# Clone this repository
+git clone https://github.com/brunopozzebon/gravity-simulator.git
+
+# Go into the repository
+cd gravity-simulator
+
+# Install all the dependencies
+yarn install
+
+# Run locally, on localhost:3000
+yarn run start
+
+```
+## :gear: How to use it
+The program begins with the file starter.js.
+```javascript
+let renderer = new Renderer();
+
+const planets = Generator.generatePlanets(10);
+const simulation = new Simulation(planets);
+
+let animate = function () {
+	requestAnimationFrame(animate);
+	simulation.update();
+	renderer.update(simulation.getScene())
+};
+animate();
+```
+To change the simulation, you just need to chose a diferent method of the class Generator.
+```bash
+Generator.generatePlanets(n) 
+#It will create 'n' objects, with random position, radius and velocity
+Generator.generateSunAndPlanet() 
+#It will create a object in the middle, a small one, orbiting him
+```
+Or to a most flexible implementation, you can create your own array of objects, adding the final array to the Simulation constructor, as the following code
+
+```javascript
+const planets = new Array();
+planets.push(new Body(0,0,0,2,0,20,20))
+planets.push(new Body(0,100,0,10,10,10,0))
+//The body is like a planet
+//Body(ini_pos_x, ini_pos_y, ini_pos_z, radious, ini_vel_x, ini_vel_y, ini_vel_z )
+const simulation = new Simulation(planets);
+```
+
+## :v: Acknowledgment
+
+This project is based in a 2D version of Ivan Seidel, called BigBangJs, he created an awesome video explaining all the math concept about the gravity theory on Youtube(I really recomment it).
+I was inspired for his work, so i need to thank him, for publishing his code on Github. Below, the links for his video and his respository;\
+[Ivan´s Youtube Video](https://www.youtube.com/watch?v=C5_7IV9XFd4) - [BigBangJs Github Repository](https://github.com/ivanseidel/BigBang-js)
