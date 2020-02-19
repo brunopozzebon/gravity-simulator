@@ -5,7 +5,6 @@ This project is a 3D browser application, that uses ThreeJS to create an awesome
 ![new](https://user-images.githubusercontent.com/37053115/74696286-c7314400-51d5-11ea-8e70-b88d3d342ab3.png)
 
 ## :file_folder: Requirements
-It need the following programs to work
 1. NodeJs
 2. Yarn 
 
