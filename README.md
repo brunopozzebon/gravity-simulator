@@ -58,6 +58,13 @@ planets.push(new Body(0,100,0,10,10,10,0))
 //Body(ini_pos_x, ini_pos_y, ini_pos_z, radious, ini_vel_x, ini_vel_y, ini_vel_z )
 const simulation = new Simulation(planets);
 ```
+### Controls
+```bash
+Zoom - Scrolling wheel
+Pan - Mouse, right button pressed
+Rotate - Mouse, left button pressed
+
+```
 
 ## :v: Acknowledgment
 
