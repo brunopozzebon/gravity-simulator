@@ -6,7 +6,7 @@ This project is a 3D browser application, that uses ThreeJS to create an awesome
 
 ## :file_folder: Requirements
 1. Node
-2. Yarn 
+2. Yarn or Npm
 
 ## :rocket: How to run it
 ```bash
@@ -16,11 +16,13 @@ git clone https://github.com/brunopozzebon/gravity-simulator.git
 # Go into the repository
 cd gravity-simulator
 
-# Install all the dependencies
-yarn install
+# If you are using Yarn
+yarn install 
 
 # Run locally, on localhost:3000
 yarn run start
+
+# If you are using npm, replace the yarn command to npm
 
 ```
 ## :gear: How to use it
