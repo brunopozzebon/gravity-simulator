@@ -4,9 +4,9 @@
   "main": "index.js",
   "author": "Bruno Pozzebon <brunopozzebon44@gmail.com>",
   "license": "MIT",
-  "scripts":{
-    "start":"node index.js",
-    "dev":"nodemon index.js"
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.17.1"

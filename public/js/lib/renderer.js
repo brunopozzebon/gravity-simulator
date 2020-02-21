@@ -20,13 +20,13 @@ class Renderer{
     controls.panSpeed =2;
     controls.maxDistance = 1500;
     controls.dynamicDampingFactor = 0.5;
-    
     return controls;
   }
 
   createCamera(){
     let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 30000);
-    camera.position.z = 50;
+    camera.position.set( 100, 100, 100 );
+    camera.lookAt( 0, 0, 0 );
     return camera;
   }
 

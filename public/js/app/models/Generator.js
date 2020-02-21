@@ -1,31 +1,33 @@
 class Generator{
-  static generatePlanets (quantity){
+  static generateRandomPlanets (quantity=10, spread=50){
     const planets = Array();
-
     for(let i=0;i<quantity;i++){
       let randRadious = Math.random();
-      let randX = (Math.random()*50)-50;
-      let randY = (Math.random()*50)-50;
-      let randZ = (Math.random()*50)-50;
-
-
+      let randX = ((Math.random()*spread)-spread/2);
+      let randY = ((Math.random()*spread)-spread/2);
+      let randZ = ((Math.random()*spread)-spread/2);
       let velX = (Math.random()*1)-1;
       let velY = (Math.random()*1)-1;
       let velZ = (Math.random()*1)-1;
-
       let body = new Body(randX, randY, randZ, randRadious,velX,velY,velZ);
-
       planets.push(body);
     }
-
     return planets;
   }
 
-  static generateSunAndPlanet(){
+  static generateDualPlanets(){
     const planets = Array();
     planets.push(new Body(0, 0, 0, 10,0,0,0));
+    planets.push(new Body(40, 40, 0, 1,-20,10,0));
+    return planets;
+  }
 
-    planets.push(new Body(40, 40, 0, 1,0,20,0));
+  static generateStableSystem(){
+    const planets = Array();
+    planets.push(new Body(0, 0, 0, 10,0,0,0));
+    planets.push(new Body(20, 20, 0, 1,-20,20,0));
+    planets.push(new Body(120, 120, 0, 3,-10,10,0));
+    planets.push(new Body(128, 128, 0, 0.05,-15,15,0));
     return planets;
   }
 
@@ -40,7 +42,6 @@ class Generator{
     });
     bulbLight.add(new THREE.Mesh(bulbGeometry, bulbMat));
     bulbLight.position.set(x, y, z);
-
     return bulbLight;
   }
 

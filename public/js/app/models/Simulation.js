@@ -14,7 +14,7 @@ class Simulation {
       scene.add(planet.trace);
     }
     scene.add(Generator.generateDome());
-    scene.add(Generator.generateLight(40,40,0))
+    scene.add(Generator.generateLight(100,100,100))
     return scene;
   }
 

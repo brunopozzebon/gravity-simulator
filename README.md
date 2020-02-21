@@ -28,7 +28,7 @@ The program begins with the file starter.js.
 ```javascript
 let renderer = new Renderer();
 
-const planets = Generator.generatePlanets(10);
+const planets = Generator.generateRandomPlanets(10,20);
 const simulation = new Simulation(planets);
 
 let animate = function () {
@@ -40,10 +40,13 @@ animate();
 ```
 To change the simulation, you can chose a different method of Generator.
 ```bash
-Generator.generatePlanets(n) 
-#It'll create 'n' objects, with random position, radius and velocity
-Generator.generateSunAndPlanet() 
-#It'll create an object in the center, and another small one orbiting it.
+Generator.generatePlanets(quantity, spread) 
+#It'll create 'quantity' planets, with random position, radius and velocity, 
+#The spread will affect the distance among these planets
+Generator.generateDualPlanets() 
+#It'll create an planet in the center, and another one orbiting it.
+Generator.generateStableSystem() 
+#It'll create an system, with one 'planet' in the center, two 'satellites' orbiting it, and an asteroid, orbiting the last 'moon'.
 ```
 To a most flexible implementation, you can create your own array of objects, adding the final array to the Simulation constructor, as the following code
 

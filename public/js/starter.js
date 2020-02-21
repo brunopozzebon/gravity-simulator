@@ -1,11 +1,6 @@
+const renderer = new Renderer();
 
-let renderer = new Renderer();
-
-
-
-const planets = Generator.generatePlanets(50);
-
-
+const planets = Generator.generateStableSystem();
 const simulation = new Simulation(planets);
 
 let animate = function () {
